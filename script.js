@@ -112,6 +112,60 @@ const affordMonths = document.getElementById("affordMonths");
 const affordResult = document.getElementById("affordResult");
 const affordSentence = document.getElementById("affordSentence");
 
+let lastScrollY = window.scrollY;
+let revealReady = false;
+const revealDelay = 1000;
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    const currentScrollY = window.scrollY;
+    const directionClass =
+      currentScrollY >= lastScrollY
+        ? "reveal--from-bottom"
+        : "reveal--from-top";
+
+    entries.forEach((entry) => {
+      const target = entry.target;
+      if (entry.isIntersecting) {
+        target.classList.remove("reveal--from-top", "reveal--from-bottom");
+        target.classList.add(directionClass);
+        target.classList.add("reveal--visible");
+      } else {
+        target.classList.remove("reveal--visible");
+      }
+    });
+
+    lastScrollY = currentScrollY;
+  },
+  { threshold: 0.15 },
+);
+
+function observeRevealables() {
+  if (!revealReady) return;
+
+  document.querySelectorAll(".reveal:not(.reveal--observed)").forEach((el) => {
+    el.classList.add("reveal--observed");
+    revealObserver.observe(el);
+  });
+}
+
+function markStaticRevealables() {
+  document.querySelectorAll(".card, .summary-card, .afford-result").forEach((el) => {
+    if (!el.classList.contains("reveal")) {
+      el.classList.add("reveal");
+    }
+  });
+}
+
+window.addEventListener("scroll", () => {
+  lastScrollY = window.scrollY;
+});
+
+setTimeout(() => {
+  revealReady = true;
+  observeRevealables();
+}, revealDelay);
+
 function numeric(value) {
   return Number(value) || 0;
 }
@@ -135,7 +189,7 @@ function formatPercent(value) {
 
 function renderControl(item, container, group) {
   const wrapper = document.createElement("div");
-  wrapper.className = "control";
+  wrapper.className = "control reveal";
 
   const top = document.createElement("div");
   top.className = "control__top";
@@ -281,7 +335,7 @@ function renderScenarios() {
     const button = document.createElement("button");
     button.type = "button";
     button.className =
-      "scenario-item" + (state.activeScenario === index ? " active" : "");
+      "scenario-item reveal" + (state.activeScenario === index ? " active" : "");
     button.textContent = scenario.name;
     button.addEventListener("click", () => {
       if (state.activeScenario === index) {
@@ -356,15 +410,29 @@ function updateSummary() {
 function renderBudgetChart(values) {
   barChart.innerHTML = "";
   const cap = Math.max(values.totalIncome, values.totalExpenses, 1200, 1);
-  const incomeBar = document.createElement("div");
-  incomeBar.className = "bar-item";
-  incomeBar.innerHTML = `<label>Income <strong>${formatCurrency(viewValue(values.totalIncome))}</strong></label>
-        <div class="bar-track"><div class="bar-fill" style="width: ${Math.min(100, (values.totalIncome / cap) * 100)}%; background: ${chartColors.rent};"></div></div>`;
-  const expenseBar = document.createElement("div");
-  expenseBar.className = "bar-item";
-  expenseBar.innerHTML = `<label>Expenses <strong>${formatCurrency(viewValue(values.totalExpenses))}</strong></label>
-        <div class="bar-track"><div class="bar-fill" style="width: ${Math.min(100, (values.totalExpenses / cap) * 100)}%; background: ${chartColors.utilities};"></div></div>`;
-  barChart.append(incomeBar, expenseBar);
+
+  const createBar = (labelText, value, color) => {
+    const bar = document.createElement("div");
+    bar.className = "bar-item reveal";
+    const label = document.createElement("label");
+    label.innerHTML = `${labelText} <strong>${formatCurrency(viewValue(value))}</strong>`;
+    const track = document.createElement("div");
+    track.className = "bar-track";
+    const fill = document.createElement("div");
+    fill.className = "bar-fill";
+    fill.style.background = color;
+    const targetWidth = Math.min(100, (value / cap) * 100);
+    fill.style.width = "0%";
+    track.appendChild(fill);
+    bar.append(label, track);
+    barChart.appendChild(bar);
+    requestAnimationFrame(() => {
+      fill.style.width = `${targetWidth}%`;
+    });
+  };
+
+  createBar("Income", values.totalIncome, chartColors.rent);
+  createBar("Expenses", values.totalExpenses, chartColors.utilities);
 }
 
 function renderLegend() {
@@ -390,7 +458,7 @@ function renderBreakdown(values) {
     const amount = numeric(state.expenses[item.key]);
     const share = total ? (amount / total) * 100 : 0;
     const row = document.createElement("div");
-    row.className = "breakdown-item";
+    row.className = "breakdown-item reveal";
     const moneyValue = formatCurrency(viewValue(amount));
     const percentValue = `${Math.round(share)}%`;
     row.innerHTML = `<span>${item.label}</span><strong>${moneyValue}</strong><span>${percentValue}</span>`;
@@ -445,10 +513,12 @@ function updateDisplay() {
   renderLegend();
   renderBreakdown(totals);
   updateAffordability(totals);
+  observeRevealables();
 }
 
 function refresh() {
   populateControls();
+  markStaticRevealables();
   if (savingsInput) savingsInput.value = (state.savings || 0).toFixed(2);
   updateDisplay();
 }
