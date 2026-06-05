@@ -2,12 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* font-family:'Courier New', Courier, monospace */
+    font-family: Palatino, URW Palladio L, serif;
 }
 .header{
     width: 100%;
     height: 100vh;
-    background: #ffffff;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://plus.unsplash.com/premium_photo-1661663603858-2df08fe3d65d?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-position: center;
+    background-size: cover;
 }
 nav{
     width: 100%;
@@ -15,15 +17,87 @@ nav{
     justify-content: space-between;
     align-items: center;
     padding: 18px 8%;
+    transition: background 1s;
 }
 nav .logo{
     display: flex;
     align-items: center;
     font-size: 26px;
     font-weight: 600;
-    color:#0f172a;
+    color:#ffff;
 }
 nav .logo img{
     width: 60px;
     margin-right: 10px;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px
+}
+nav ul li a{
+    text-decoration: none;
+    color: #ffff;
+    font-weight: 500;
+}
+nav:hover{
+    background: #fbfaf5;
+}
+nav:hover .logo{
+    color: #333;
+}
+nav:hover ul li a{
+    color: #333;
+}
+.content{
+    margin-top: 15%;
+    margin-left: 9%;
+    color:#ffff;
+}
+.content h1{
+    font-size: 58px;
+    line-height: 1.0;
+    margin-top: -5px;
+    margin-bottom: 40px;
+}
+.content p{
+    max-width: 500px;
+    line-height: 28px;
+    opacity: 0;
+    margin-bottom: 40px;
+}
+.links{
+    margin-top: 30px;
+    opacity: 0;
+}
+.links a{
+    color:#ffff;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn{
+    display: inline-block;
+    border: 1px solid #ffff;
+    padding: 10px 35px;
+    border-radius: 30px;
+    margin-right: 15px;
+}
+.slide-left{
+    animation: slideleft 1s linear forwards;
+}
+@keyframes slideleft{
+    0%{
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+p.slide-left{
+    animation-delay: 1s;
+}
+.links.slide-left{
+    animation-delay: 2s;
 }
