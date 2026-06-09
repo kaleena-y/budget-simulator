@@ -5,6 +5,14 @@
     font-family: Palatino, "URW Palladio L", serif;
 }
 
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background: linear-gradient(135deg, #eeecea 0%, #f7f5f2 100%);
     background-attachment: fixed;
@@ -20,6 +28,8 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 nav {
@@ -29,6 +39,7 @@ nav {
     align-items: center;
     padding: 18px 8%;
     transition: background 1s;
+    box-sizing: border-box;
 }
 
 nav .logo {
@@ -517,6 +528,114 @@ p.slide-left {
     nav ul li {
         margin: 6px 10px;
     }
+}
+
+@media (max-width: 768px) {
+
+.header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center; 
+        padding: 0 24px;  
+    }
+
+    .content {
+        margin: 0;            
+        text-align: center; 
+        width: 100%;
+    }
+
+    .content h1 {
+        font-size: 32px;      
+        margin-bottom: 24px;
+    }
+
+    .content p {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 32px;
+    }
+
+    .links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;  
+        margin-top: 0;
+    }
+
+    .btn {
+        margin-right: 0;   
+        width: 100%;    
+        max-width: 200px;
+    }
+
+    .header .content {
+        text-align: center;
+        padding: 40px 20px;
+    }
+    
+    .header .links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    nav ul {
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: center;
+        padding: 0;
+        gap: 20px;
+    }
+
+    .lessons-grid {
+        grid-template-columns: 1fr;
+        max-width: 450px; 
+        margin: 0 auto; 
+    }
+
+    .lesson {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 24px;  
+    }
+
+    .lesson-num {
+        padding-top: 0;
+        margin-bottom: 4px;
+    }
+
+    .compare-grid {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .compare-col {
+        padding: 32px 24px;
+    }
+
+    .compare-col--other {
+        border-bottom: 1px solid rgba(140, 115, 85, 0.18);
+    }
+    
+    .compare-col ul li {
+        padding-left: 22px;
+    }
+    
+    .compare-col--other ul li::before,
+    .compare-col--budgetu ul li::before {
+        top: 2px;
+    }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
