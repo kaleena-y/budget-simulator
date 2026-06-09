@@ -1,34 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>BudgetU — Home</title>
     <link rel="stylesheet" href="homestyle.css">
 </head>
+
 <body>
     <div class="header">
         <nav>
             <div class="logo">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXuUyrT86LxF2SDJgBqjgwDeX3rDcLZqfcIg&s">
+                <img src="https://cdn-icons-png.flaticon.com/128/18609/18609263.png">
                 <span>BudgetU</span>
             </div>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Simulator</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="../Home Page/home.html" class="active-link">Home</a></li>
+                <li><a href="../Second Page/index.html">Simulator</a></li>
+                <li><a href="../About Page/about.html">About</a></li>
             </ul>
         </nav>
 
         <div class="content">
             <h1 class="slide-left">Learn to live within your means<br>— <i>before</i> it matters.</h1>
-            <p class="slide-left">Experiment with rent, groceries, subscriptions, and social spending in a consequence-free environment. See exactly where your money goes.</p>
+            <p class="slide-left">Experiment with rent, groceries, subscriptions, and social spending in a
+                consequence-free environment. See exactly where your money goes.</p>
             <div class="links slide-left">
-                <a href="#" class="btn">Get Started</a>
-                <a href="#">Learn More</a>
+                <a href="../Second Page/index.html" class="btn">Get Started</a>
+                <a href="../About Page/about.html">Learn More</a>
             </div>
         </div>
     </div>
-    
+
+    <section class="stats-strip">
+        <div class="stat">
+            <strong>Track</strong>
+            <span>Income & Expenses</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+            <strong>Visualize</strong>
+            <span>Categories</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+            <strong>Plan</strong>
+            <span>Purchases</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+            <strong>Try</strong>
+            <span>Scenarios</span>
+        </div>
+    </section>
+
+    <section class="lessons-section">
+        <div class="lessons-inner">
+            <span class="section-label">Things nobody teaches you</span>
+            <h2 class="section-title">The financial realities of student life</h2>
+            <div class="lessons-grid">
+                <div class="lesson reveal-up">
+                    <div class="lesson-num">—</div>
+                    <div class="lesson-body">
+                        <h3>Rent is rarely your biggest problem</h3>
+                        <p>The real danger comes from the daily shuffle of groceries, transit, subscriptions, and coffee. Those small, quiet costs are usually what empty your account, not the fixed bills you already expected.</p>
+                    </div>
+                </div>
+                <div class="lesson reveal-up">
+                    <div class="lesson-num">—</div>
+                    <div class="lesson-body">
+                        <h3>Paychecks feels bigger than they are</h3>
+                        <p>A $1,400 deposit looks massive on a Friday morning. Once you strip away basic survival expenses like rent and food, you might only have $200 of actual fun money left over.</p>
+                    </div>
+                </div>
+                <div class="lesson reveal-up">
+                    <div class="lesson-num">—</div>
+                    <div class="lesson-body">
+                        <h3>Savings habits start small or not at all</h3>
+                        <p>Waiting until you have a massive income to save means you will keep waiting forever. Putting away just $30 a month builds a safety net faster than you think, especially when you see it stack up on screen.</p>
+                    </div>
+                </div>
+                <div class="lesson reveal-up">
+                    <div class="lesson-num">—</div>
+                    <div class="lesson-body">
+                        <h3>The first budget is always wrong</h3>
+                        <p>That is completely normal. The goal here is not to be a perfect math wizard right away. It is just about getting comfortable looking at your numbers and tweaking them as life changes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section class="compare-section">
+        <div class="compare-inner">
+            <span class="section-label">A different kind of tool</span>
+            <h2 class="section-title">Built for learning, not accounting</h2>
+            <div class="compare-grid">
+                <div class="compare-col compare-col--other">
+                    <h3>Most budgeting apps</h3>
+                    <ul>
+                        <li>Require linking a bank account</li>
+                        <li>Assume you already understand budgeting</li>
+                        <li>Focus on tracking past spending</li>
+                        <li>Show you what went wrong after it happened</li>
+                        <li>Designed for working adults</li>
+                    </ul>
+                </div>
+                <div class="compare-col compare-col--budgetu">
+                    <h3>BudgetU</h3>
+                    <ul>
+                        <li>No account or data required</li>
+                        <li>Designed for complete beginners</li>
+                        <li>Lets you plan before you spend</li>
+                        <li>Shows what could go wrong before it does</li>
+                        <li>Built specifically for student life</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-section">
+        <div class="how-inner">
+            <div class="how-text">
+                <div class="section-label">How it works</div>
+                <h2 class="section-title" style="text-align:left; max-width: 340px;">Three steps to a clearer budget</h2>
+                <p class="how-desc">It takes less than a minute to map out your first setup. No profiles to build, no commitments required, just a clean slate for your numbers.</p>
+                <a href="../Second Page/index.html" class="cta-btn">Open the Simulator →</a>
+            </div>
+            <div class="how-steps">
+                <div class="how-step reveal-up">
+                    <div class="step-num">01</div>
+                    <div class="step-body">
+                        <h3>Enter your income</h3>
+                        <p>Add your work pay and any other income sources. Switch between monthly and annual views at any time.</p>
+                    </div>
+                </div>
+                <div class="step-rule"></div>
+                <div class="how-step reveal-up" style="animation-delay: 0.15s;">
+                    <div class="step-num">02</div>
+                    <div class="step-body">
+                        <h3>Adjust your expenses</h3>
+                        <p>Drag sliders for rent, utilities, groceries, entertainment, and more. Every change reflects instantly in your balance.</p>
+                    </div>
+                </div>
+                <div class="step-rule"></div>
+                <div class="how-step reveal-up" style="animation-delay: 0.3s;">
+                    <div class="step-num">03</div>
+                    <div class="step-body">
+                        <h3>Read your results</h3>
+                        <p>Check your health score, savings rate, and affordability timeline — then adjust until the numbers work for you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>

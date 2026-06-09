@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — BudgetU</title>
+    <link rel="stylesheet" href="aboutstyle.css">
+</head>
+
+<body>
+    <div class="header-nav-wrap">
+        <nav>
+            <div class="logo">
+                <img src="https://cdn-icons-png.flaticon.com/128/18609/18609263.png" alt="BudgetU logo">
+                <span>BudgetU</span>
+            </div>
+            <ul>
+                <li><a href="../Home Page/home.html">Home</a></li>
+                <li><a href="../Second Page/index.html">Simulator</a></li>
+                <li><a href="../About Page/about.html" class="active-link">About</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="page">
+
+        <section class="card hero scroll-reveal">
+            <span class="hero-subtitle">About BudgetU</span>
+            <h1>Built for students.<br>Designed for clarity.</h1>
+            <p>BudgetU is an interactive tool meant for people who want to wrap their heads around living on their own. We traded complex software spreadsheets for simple visuals so you can focus on learning how cash flows.</p>
+        </section>
+
+        <section class="card scroll-reveal">
+            <div class="mission">
+                <div class="mission__text">
+                    <h2>Why We Built This</h2>
+                    <div class="divider" style="margin-bottom: 16px;"></div>
+                    <p>A lot of money tools seem like they were designed for corporate accountants. We wanted to build something for the rest of us, whether you are moving into your first apartment, trying to make sense of your part-time income, or just curious about where your cash actually goes.</p>
+                    <br>
+                    <p>This simulator gives you a safe space to test things out. You can move sliders around, load a realistic lifestyle preset, and watch how it impacts your bottom line.</p>
+                </div>
+                <div class="mission__stat-block">
+                    <div class="stat-item">
+                        <strong>7</strong>
+                        <span>expense categories to track</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>3</strong>
+                        <span>student lifestyle scenarios</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>100%</strong>
+                        <span>free, no sign-up required</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>0</strong>
+                        <span>data saved or shared</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card scroll-reveal">
+            <h2 class="how-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step__icon">1</div>
+                    <h3>Enter your income</h3>
+                    <p>Type in your job earnings, side hustles, or student allowance. The totals update automatically as you go.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step__icon">2</div>
+                    <h3>Adjust your expenses</h3>
+                    <p>Allocate funds for rent, groceries, and weekend plans. You can see how your financial health score changes live on screen.</p>
+                </div>
+                <div class="step">
+                    <div class="step__icon">3</div>
+                    <h3>Plan your goals</h3>
+                    <p>Our affordability calculator lets you see exactly how many months of saving it takes to afford that big purchase you have your eye on.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card scroll-reveal">
+            <h2 class="how-title">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>Transparency first</h3>
+                    <p>We show all of our work. There are no mysterious background algorithms or confusing formulas here, just plain math you can easily follow.</p>
+                </div>
+                <div class="value-card">
+                    <h3>No stress, no judgment</h3>
+                    <p>Real budgets fluctuate all the time. This space is meant for you to mess up, test bad decisions, and press reset whenever you want.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Built for real student life</h3>
+                    <p>We built our categories around actual student expenses like shared rent and streaming subscriptions, not generic financial textbook examples.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Privacy by design</h3>
+                    <p>We do not collect, save, or sell anything you type in. The entire app runs locally right inside your own browser window.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card cta-card scroll-reveal">
+            <span class="hero-subtitle">Ready to start?</span>
+            <h2>Try the simulator now</h2>
+            <p>It takes less than a minute to map out your first setup. No profiles to build, no commitments required, just a clean slate for your numbers.
+            </p>
+            <a href="../Second Page/index.html" class="cta-btn">Open the Simulator</a>
+        </section>
+
+    </main>
+
+    <script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-active');
+            } else {
+                entry.target.classList.remove('reveal-active');
+            }
+        });
+    }, {
+        threshold: 0.1, 
+        rootMargin: "-20px 0px -20px 0px" 
+    });
+    document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+</script>
+
+
+</body>
+
+</html>

@@ -1,115 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Budget Simulator</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+  <div class="header-nav-wrap">
+    <nav>
+      <div class="logo">
+        <img src="https://cdn-icons-png.flaticon.com/128/18609/18609263.png" alt="BudgetU logo">
+        <span>BudgetU</span>
+      </div>
+      <ul>
+        <li><a href="../Home Page/home.html">Home</a></li>
+        <li><a href="../Second Page/index.html" class="active-link">Simulator</a></li>
+        <li><a href="../About Page/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+
   <main class="page">
-    <section class="topbar" aria-label="Simulator header">
-      <div class="topbar__title">
-        <strong>Student Budget Simulator</strong>
-        <h1>Build Your Ideal Monthly Budget</h1>
-      </div>
-      <div class="pill-toggle" role="group" aria-label="Choose view mode">
-        <button id="modeMonthly" class="active" type="button">Monthly</button>
-        <button id="modeAnnual" type="button">Annually</button>
+
+    <section class="hero-block">
+      <strong class="hero-subtitle">Student Budget Simulator</strong>
+      <h1 class="hero-title">Build Your Student Budget.</h1>
+      <p class="hero-desc">Experiment with income, expenses, and savings to see how financial decisions
+        affect your monthly balance.</p>
+      <div class="links pill-toggle-links">
+        <a href="#" id="modeMonthly" class="btn active">Monthly</a>
+        <a href="#" id="modeAnnual" class="btn">Annually</a>
       </div>
     </section>
 
-    <section class="card" id="savingsCard" aria-label="Existing savings">
-      <h2 id="savings-title">Existing Savings</h2>
-      <p>Add any existing savings you already have. This will be included in affordability and total account value calculations.</p>
-      <label style="display: block; margin-top: 18px;">
-        <span style="color: var(--muted); display: block; margin-bottom: 10px;">Savings amount</span>
-        <input id="savingsInput" class="money-input" type="text" value="0.00">
-      </label>
+    <section class="summary-strip">
+      <div class="strip-item">
+        <span class="strip-label" id="totalIncomeLabel">Monthly Income</span>
+        <strong class="strip-value" id="totalIncome">$0.00</strong>
+      </div>
+      <div class="strip-divider"></div>
+      <div class="strip-item">
+        <span class="strip-label" id="totalExpensesLabel">Monthly Expenses</span>
+        <strong class="strip-value" id="totalExpenses">$0.00</strong>
+      </div>
+      <div class="strip-divider"></div>
+      <div class="strip-item">
+        <span class="strip-label">Remaining Balance</span>
+        <strong class="strip-value" id="balanceValue">$0.00</strong>
+        <span class="status-tag" id="statusTag">Within budget</span>
+      </div>
+      <div class="strip-divider"></div>
+      <div class="strip-item">
+        <span class="strip-label">Savings Rate</span>
+        <strong class="strip-value" id="savingsRate">0%</strong>
+      </div>
+      <div class="strip-divider"></div>
+      <div class="strip-item">
+        <span class="strip-label">Health Score</span>
+        <strong class="strip-value" id="healthScore">Fair</strong>
+      </div>
     </section>
 
-    <section class="layout">
-      <div class="section">
-        <article class="card" aria-labelledby="income-title">
+    <section class="input-band">
+      <article class="card band-card band-card--left" aria-labelledby="income-title">
+        <div class="band-section">
           <h2 id="income-title">Income Sources</h2>
           <p>Track your main income streams and see how your budget changes in real time.</p>
           <div class="controls" id="incomeControls"></div>
-        </article>
+        </div>
 
-        <article class="card" aria-labelledby="expense-title">
-          <h2 id="expense-title">Monthly Expenses</h2>
-          <p>Adjust the key spending categories that affect your student budget the most.</p>
-          <div class="controls" id="expenseControls"></div>
-        </article>
+        <div class="divider-rule"></div>
 
-        <article class="card" aria-labelledby="scenario-title">
+        <div class="band-section">
+          <h2 id="savings-title">Existing Savings</h2>
+          <p>Any savings already on hand — included in your total account value and affordability calculations.</p>
+          <label class="savings-label-layout">
+            <span>Savings amount</span>
+            <input id="savingsInput" class="money-input" type="text" value="0.00">
+          </label>
+        </div>
+
+        <div class="divider-rule"></div>
+
+        <div class="band-section band-section--grow">
           <h2 id="scenario-title">Scenario Presets</h2>
-          <p>Use typical student scenarios to compare spending habits and savings potential.</p>
+          <p>Load a typical student scenario to compare spending habits and savings potential instantly.</p>
           <div class="scenario-list" id="scenarioList"></div>
-          <p class="footer-note" style="padding-top: 18px;">Select one preset to load values and see your updated balance instantly. Re-click to return to your own budget.</p>
-        </article>
-      </div>
-
-      <div class="section">
-        <div class="summary-grid">
-          <div class="summary-card">
-            <strong id="totalIncomeLabel">Monthly Income</strong>
-            <p class="value" id="totalIncome">$0.00</p>
-          </div>
-          <div class="summary-card">
-            <strong id="totalExpensesLabel">Monthly Expenses</strong>
-            <p class="value" id="totalExpenses">$0.00</p>
-          </div>
-          <div class="summary-card balance-card">
-            <strong>Remaining Balance</strong>
-            <p class="value" id="balanceValue">$0.00</p>
-          </div>
-          <div class="summary-card">
-            <strong>Savings Rate</strong>
-            <p class="value" id="savingsRate">0%</p>
-          </div>
-          <div class="summary-card span-all">
-            <strong>Total Account Value</strong>
-            <p class="value" id="totalAccount">$0.00</p>
-          </div>
-          <div class="summary-card health-score">
-            <strong>Financial Health Score</strong>
-            <p class="value" id="healthScore">Fair</p>
-          </div>
+          <p class="footer-note" style="padding-top:14px;">Re-click any preset to return to your own values.</p>
         </div>
+      </article>
 
-        <div class="card chart-card" aria-labelledby="chart-title">
-          <div class="chart-row">
-            <div>
-              <h2 id="chart-title">Budget Snapshot</h2>
-              <p>Compare income versus spending and analyze which categories take the biggest share.</p>
-            </div>
-            <div class="legend" id="legendList"></div>
-          </div>
+      <article class="card band-card band-card--right" aria-labelledby="expense-title">
+        <h2 id="expense-title">Monthly Expenses</h2>
+        <p>Adjust the key spending categories that affect your student budget the most.</p>
+        <div class="controls" id="expenseControls"></div>
+      </article>
 
+    </section>
+
+    <section class="full-chart-section card">
+      <div class="full-chart-inner">
+        <div class="full-chart-left">
+          <h2 id="chart-title">Income vs. Expenses</h2>
+          <p>See how your income stacks up against your total spending at a glance.</p>
           <div class="bar-chart" id="barChart"></div>
-          <div class="breakdown" id="breakdownList"></div>
         </div>
-
-        <div class="card" aria-labelledby="afford-title">
-          <h2 id="afford-title">Can I Afford It?</h2>
-          <p>Estimate how many months of saving it will take to buy something important.</p>
-          <div class="afford">
-            <label>
-              <span style="color: var(--muted); display: block; margin-bottom: 4px;">Desired Purchase Amount:</span>
-              <input id="affordInput" type="text" value="1200.00">
-            </label>
-            <div class="afford-result" id="affordResult">
-              <span id="affordText">Time Needed:</span>
-              <strong id="affordMonths">0 months</strong>
-            </div>
-            <div id="affordSentence" style=color:var(--muted);></div>
-          </div>
+        <div class="full-chart-divider"></div>
+        <div class="full-chart-right">
+          <span class="strip-label">Total Account Value</span>
+          <p class="account-value" id="totalAccount">$0.00</p>
+          <p class="account-subtext">Your existing savings plus your projected monthly balance.</p>
         </div>
       </div>
     </section>
+
+    <section class="donut-section card">
+      <div class="donut-section-header">
+        <h2 id="donut-title">Expense Breakdown</h2>
+        <p>See exactly where your money goes — each slice represents one spending category as a share of total expenses.
+        </p>
+      </div>
+      <div class="donut-section-body">
+        <div class="donut-chart-container">
+          <div class="donut-chart" id="donutChartCircle">
+            <div class="donut-chart__center">
+              <span>Total Expenses</span>
+              <strong id="donutTotalValue">$0.00</strong>
+            </div>
+          </div>
+        </div>
+        <div class="breakdown-panel">
+          <div class="breakdown" id="breakdownList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="afford-section">
+      <div class="afford-editorial">
+        <div class="afford-editorial__left">
+          <strong class="hero-subtitle">Plan Ahead</strong>
+          <h2 class="afford-headline">Can I Afford It?</h2>
+          <p class="afford-pitch">Knowing your balance is one thing — knowing <em>when</em> you can reach a goal is
+            another. Enter any purchase and instantly see how many months of saving stand between you and it.</p>
+          <ul class="afford-benefits">
+            <li>
+              <span class="benefit-icon">◎</span>
+              <span>Set real savings targets, not guesses</span>
+            </li>
+            <li>
+              <span class="benefit-icon">◎</span>
+              <span>See how trimming one expense brings your goal closer</span>
+            </li>
+            <li>
+              <span class="benefit-icon">◎</span>
+              <span>Factor in what you've already saved</span>
+            </li>
+          </ul>
+        </div>
+        <div class="afford-editorial__right card">
+          <label class="afford-label">
+            <span>Desired Purchase Amount</span>
+            <input id="affordInput" class="afford-input" type="text" value="1200.00" class="afford-big-input">
+          </label>
+          <div class="afford-result" id="affordResult">
+            <span id="affordText">Time Needed</span>
+            <strong id="affordMonths">0 months</strong>
+          </div>
+          <p id="affordSentence" class="afford-sentence"></p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <script src="script.js"></script>
+  <div id="donutTooltip" class="donut-tooltip"></div>
 </body>
+
 </html>
